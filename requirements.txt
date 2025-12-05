@@ -1,0 +1,65 @@
+# Robin - AI-Powered Dark Web OSINT Tool
+# Requirements
+
+# Core
+click>=8.1.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+PyYAML>=6.0.0
+
+# HTTP & Networking
+requests>=2.31.0
+aiohttp>=3.9.0
+aiohttp-socks>=0.8.0
+PySocks>=1.7.1
+httpx>=0.25.0
+
+# Web Scraping
+beautifulsoup4>=4.12.0
+bs4
+lxml>=4.9.0
+html5lib>=1.1
+
+# CLI
+yaspin>=3.0.0
+rich>=13.7.0
+tqdm>=4.66.0
+
+# LLM Providers
+openai>=1.50.0             # New responses.create() API for GPT-5
+anthropic>=0.8.0
+google-genai>=1.0.0        # New genai.Client() API for Gemini 3
+google-generativeai>=0.3.0 # Legacy support
+ollama>=0.1.0
+
+# LangChain
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-anthropic>=0.0.3
+langchain-google-genai>=0.0.5
+langchain-ollama>=0.0.1
+langchain-community>=0.0.10
+
+# API Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.25.0
+starlette>=0.35.0
+
+# Web UI
+streamlit>=1.30.0
+
+# Export
+reportlab>=4.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+
+# Development
+black>=23.0.0
+isort>=5.12.0
+flake8>=6.1.0
+mypy>=1.7.0
