@@ -1,6 +1,7 @@
 """Factory for creating search engine instances."""
 
 from typing import List, Optional, Type, Dict
+import requests
 
 from .base import BaseSearchEngine
 from .ahmia import AhmiaSearchEngine, AhmiaClearnetEngine
@@ -38,7 +39,7 @@ def create_search_engines(
     
     Args:
         engines: List of engine names to create (all if None)
-        session: HTTP session to use
+        session: HTTP session to use (will create one if None)
         timeout: Request timeout
         max_retries: Maximum retries per request
         
@@ -46,6 +47,13 @@ def create_search_engines(
         List of configured search engine instances
     """
     engine_names = engines or DEFAULT_ENGINES
+    
+    # Create a session if not provided
+    if session is None:
+        session = requests.Session()
+        session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/109.0'
+        })
     
     instances = []
     

@@ -61,7 +61,8 @@ class GoogleProvider(BaseLLMProvider):
     def initialize(self) -> None:
         """Initialize the Google AI client using new genai.Client() API."""
         try:
-            api_key = self.config.api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+            # Prefer GOOGLE_API_KEY, then GEMINI_API_KEY
+            api_key = self.config.api_key or os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
             
             if not api_key:
                 raise ValueError("GEMINI_API_KEY or GOOGLE_API_KEY environment variable not set")
