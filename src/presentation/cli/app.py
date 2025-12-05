@@ -199,8 +199,29 @@ Available commands:
                 click.clear()
                 print_banner()
             else:
-                # TODO: Process query
-                click.echo(f"{Colors.YELLOW}Processing: {query}{Colors.END}")
+                # Process query with LLM
+                click.echo(f"{Colors.YELLOW}Processing...{Colors.END}")
+                
+                try:
+                    from ...adapters.llm.factory import LLMFactory
+                    
+                    # Create provider
+                    provider = LLMFactory.create(
+                        model_name=model,
+                        temperature=0.7,
+                    )
+                    
+                    # Generate response
+                    response = provider.complete(
+                        prompt=query,
+                        system_prompt="You are NarakAAI, an AI assistant specialized in dark web intelligence and OSINT. Provide helpful, accurate, and insightful responses."
+                    )
+                    
+                    # Display response
+                    click.echo(f"\n{Colors.CYAN}{response.content}{Colors.END}\n")
+                    
+                except Exception as e:
+                    click.echo(f"{Colors.RED}Error: {str(e)}{Colors.END}\n")
                 
         except KeyboardInterrupt:
             click.echo(f"\n{Colors.CYAN}👋 Goodbye!{Colors.END}")

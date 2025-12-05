@@ -38,6 +38,8 @@ MODEL_PROVIDER_MAP: Dict[str, Type[BaseLLMProvider]] = {
     "claude-sonnet-4-0": AnthropicProvider,
     
     # Google models - Gemini 3 (2025)
+    "gemini-flash-latest": GoogleProvider,  # Latest Flash with Google Search
+    "gemini-pro-latest": GoogleProvider,    # Latest Pro model
     "gemini-3-pro": GoogleProvider,       # Most intelligent, best multimodal
     # Google models - Gemini 2.5
     "gemini-2.5-pro": GoogleProvider,     # Powerful reasoning, coding
