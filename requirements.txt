@@ -47,7 +47,7 @@ fastapi
 uvicorn[standard]
 starlette
 
-# Web UI
+# Web Ui
 streamlit
 
 # Export
