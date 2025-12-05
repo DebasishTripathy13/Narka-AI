@@ -49,10 +49,20 @@ class BaseSearchEngine(SearchEngineProvider):
         pass
     
     @property
+    def name(self) -> str:
+        """Implements the interface requirement for name."""
+        return self.engine_name
+    
+    @property
     @abstractmethod
     def base_url(self) -> str:
         """Base URL of the search engine."""
         pass
+    
+    @property
+    def search_url_template(self) -> str:
+        """Implements the interface requirement for search_url_template."""
+        return self.build_search_url("{query}")
     
     @property
     def is_tor_required(self) -> bool:
@@ -148,6 +158,22 @@ class BaseSearchEngine(SearchEngineProvider):
         Override in subclasses to implement engine-specific parsing.
         """
         raise NotImplementedError("Subclasses must implement _parse_results")
+    
+    def parse_results(self, html_content: str) -> List[dict]:
+        """
+        Implements the interface requirement for parse_results.
+        
+        Converts SearchResult objects to dict format expected by interface.
+        """
+        results = self._parse_results(html_content, "")
+        return [
+            {
+                "title": r.title,
+                "link": r.url,
+                "snippet": r.description
+            }
+            for r in results
+        ]
     
     def search(self, query: str, max_results: int = 50) -> List[SearchResult]:
         """Execute a search query."""
