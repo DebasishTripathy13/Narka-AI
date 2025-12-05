@@ -20,7 +20,13 @@ SEARCH_ENGINE_REGISTRY: Dict[str, Type[BaseSearchEngine]] = {
 }
 
 # Default engine configuration (name -> priority)
+# Use clearnet version by default since Tor may not be configured
 DEFAULT_ENGINES = [
+    "ahmia_clearnet",  # Clearnet version works without Tor
+]
+
+# Tor-enabled engines (require Tor SOCKS proxy)
+TOR_ENGINES = [
     "ahmia",
     "torch",
     "haystak",

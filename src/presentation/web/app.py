@@ -130,7 +130,7 @@ def render_sidebar():
         
         col1, col2 = st.columns(2)
         with col1:
-            st.metric("Tor", "🟢 Connected")
+            st.metric("Tor", "⚪ Optional")
         with col2:
             st.metric("API", "🟢 Ready")
         
@@ -153,6 +153,9 @@ def render_search_page(model: str):
     st.markdown('<h1 class="main-header">🔍 Dark Web Search</h1>', unsafe_allow_html=True)
     st.markdown('<p class="sub-header">Search across multiple dark web search engines</p>', unsafe_allow_html=True)
     
+    # Tor notice
+    st.info("ℹ️ Using clearnet search engines by default. For .onion sites, configure Tor SOCKS proxy (Settings).")
+    
     # Search input
     col1, col2 = st.columns([4, 1])
     with col1:
@@ -171,7 +174,7 @@ def render_search_page(model: str):
             engines = st.multiselect(
                 "Search Engines",
                 list(SEARCH_ENGINE_REGISTRY.keys()),
-                default=["ahmia", "torch"]
+                default=["ahmia_clearnet"]
             )
         with col2:
             max_results = st.slider("Max Results", 10, 200, 50)
@@ -278,6 +281,9 @@ def render_investigate_page(model: str):
     st.markdown('<h1 class="main-header">🔬 AI Investigation</h1>', unsafe_allow_html=True)
     st.markdown('<p class="sub-header">Comprehensive dark web investigation with AI analysis</p>', unsafe_allow_html=True)
     
+    # Tor notice
+    st.info("ℹ️ Using clearnet search engines. For Tor (.onion) searches, configure Tor proxy in Settings.")
+    
     # Investigation input
     query = st.text_area(
         "Investigation Query",
@@ -291,7 +297,7 @@ def render_investigate_page(model: str):
         engines = st.multiselect(
             "Search Engines",
             list(SEARCH_ENGINE_REGISTRY.keys()),
-            default=["ahmia", "torch", "haystak"]
+            default=["ahmia_clearnet"]
         )
         max_results = st.slider("Max results per engine", 5, 50, 10)
     with col2:
