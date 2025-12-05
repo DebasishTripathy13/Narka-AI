@@ -115,7 +115,7 @@ def scrape(ctx, urls: tuple, extract_entities: bool, output: Optional[str], form
 
 @cli.command()
 @click.argument('query')
-@click.option('--model', '-m', default='gpt-4o', help='LLM model to use')
+@click.option('--model', '-m', default='gemini-flash-latest', help='LLM model to use')
 @click.option('--scrape/--no-scrape', default=True, help='Scrape search results')
 @click.option('--max-pages', '-p', default=10, help='Max pages to scrape')
 @click.option('--output', '-o', type=click.Path(), help='Output file path')
@@ -164,7 +164,7 @@ def investigate(ctx, query: str, model: str, scrape: bool, max_pages: int, outpu
 
 
 @cli.command()
-@click.option('--model', '-m', default='gpt-4o', help='LLM model to use')
+@click.option('--model', '-m', default='gemini-flash-latest', help='LLM model to use')
 @click.pass_context
 def interactive(ctx, model: str):
     """

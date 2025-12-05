@@ -199,8 +199,8 @@ TOR_SOCKS_HOST=127.0.0.1
 TOR_SOCKS_PORT=9050
 
 # Optional: Default LLM
-DEFAULT_LLM_PROVIDER=openai
-DEFAULT_LLM_MODEL=gpt-4o
+DEFAULT_LLM_PROVIDER=google
+DEFAULT_LLM_MODEL=gemini-flash-latest
 ```
 
 ### CLI Usage

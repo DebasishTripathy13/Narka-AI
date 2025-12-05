@@ -28,7 +28,7 @@ class LLMConfig(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="LLM_")
     
     default_provider: str = Field(default="openai", description="Default LLM provider")
-    default_model: str = Field(default="gpt-4o", description="Default model")
+    default_model: str = Field(default="gemini-flash-latest", description="Default model")
     temperature: float = Field(default=0.0, ge=0.0, le=2.0, description="Model temperature")
     max_tokens: int = Field(default=4000, description="Maximum tokens")
     streaming: bool = Field(default=True, description="Enable streaming")

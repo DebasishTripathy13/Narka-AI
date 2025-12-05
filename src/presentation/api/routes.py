@@ -226,7 +226,7 @@ async def analyze(request: AnalyzeRequest):
     return AnalyzeResponse(
         analysis_type=request.analysis_type,
         result="Analysis placeholder",
-        model_used=request.model or "gpt-4o",
+        model_used=request.model or "gemini-flash-latest",
         tokens_used=0,
     )
 

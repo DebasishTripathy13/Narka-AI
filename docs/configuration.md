@@ -17,7 +17,7 @@ All configuration options can be set via environment variables.
 | `ANTHROPIC_API_KEY` | Anthropic API key | - |
 | `GOOGLE_API_KEY` | Google AI API key | - |
 | `OLLAMA_BASE_URL` | Ollama server URL | `http://127.0.0.1:11434` |
-| `LLM_DEFAULT_MODEL` | Default LLM model | `gpt-4o` |
+| `LLM_DEFAULT_MODEL` | Default LLM model | `gemini-flash-latest` |
 | `LLM_TEMPERATURE` | Model temperature | `0.0` |
 
 ### Tor Configuration
@@ -60,7 +60,7 @@ tor:
   port: 9050
 
 llm:
-  default_model: gpt-4o
+  default_model: gemini-flash-latest
   temperature: 0.0
 
 search:
