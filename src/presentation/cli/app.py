@@ -268,18 +268,27 @@ def api(ctx, host: str, port: int, reload: bool):
 
 
 @cli.command()
+@click.option('--port', '-p', default=8501, help='Port to run the web UI on')
+@click.option('--host', default='localhost', help='Host to run the web UI on')
 @click.pass_context
-def webui(ctx):
+def webui(ctx, port: int, host: str):
     """
     Start the Streamlit web interface.
     """
     print_banner()
     
-    click.echo(f"\n{Colors.CYAN}🌐 Starting Robin Web UI{Colors.END}")
+    click.echo(f"\n{Colors.CYAN}🌐 Starting NarakAAI Web UI{Colors.END}")
+    click.echo(f"Host: {host}")
+    click.echo(f"Port: {port}\n")
     
     try:
         import subprocess
-        subprocess.run(["streamlit", "run", "src/presentation/web/app.py"])
+        subprocess.run([
+            "streamlit", "run", 
+            "src/presentation/web/app.py",
+            "--server.port", str(port),
+            "--server.address", host
+        ])
     except FileNotFoundError:
         click.echo(f"{Colors.RED}Error: streamlit not installed. Run: pip install streamlit{Colors.END}")
         sys.exit(1)
